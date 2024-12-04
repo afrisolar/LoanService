@@ -113,7 +113,6 @@ public class LoanServiceImpl implements LoanService {
 
     private LoanResponseDTO mapToLoanResponseDTO(Loan loan) {
         return LoanResponseDTO.builder()
-                .loanId(loan.getLoanId())
                 .startDate(loan.getStartDate())
                 .loanEndDate(loan.getLoanEndDate())
                 .totalLoanAmount(loan.getTotalLoanAmount())

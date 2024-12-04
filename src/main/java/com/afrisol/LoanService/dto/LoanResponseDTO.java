@@ -16,7 +16,6 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Builder
 public class LoanResponseDTO {
-    private Integer loanId;
     private LocalDate startDate;
     private LocalDate loanEndDate;
     private BigDecimal totalLoanAmount;

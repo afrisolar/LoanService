@@ -4,8 +4,8 @@ spring:
 
   r2dbc:
     url: r2dbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:loan_service_db}
-    username: ${DB_USERNAME:your_username}
-    password: ${DB_PASSWORD:your_password}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
 
 springdoc:
   swagger-ui:
@@ -13,3 +13,8 @@ springdoc:
 
 server:
   port: ${SERVER_PORT:8082}
+
+logging:
+  level:
+    org.springframework.r2dbc.connection: DEBUG
+    io.r2dbc.postgresql: DEBUG

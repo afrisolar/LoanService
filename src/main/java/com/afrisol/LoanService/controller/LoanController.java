@@ -36,15 +36,7 @@ public class LoanController {
         String requestID = UUID.randomUUID().toString();
         log.info("Retrieving loan with ID: {} and request ID: {}", loanId, requestID);
         return loanService.getLoan(loanId, requestID)
-                .map(ResponseEntity::ok)
-                .onErrorResume(LoanNotFoundException.class, ex -> {
-                    log.error("Loan not found: {}", ex.getMessage());
-                    return Mono.just(ResponseEntity.status(404).body(null));
-                })
-                .onErrorResume(RuntimeException.class, ex -> {
-                    log.error("Unhandled RuntimeException: {}", ex.getMessage());
-                    return Mono.just(ResponseEntity.status(400).body(null));
-                });
+                .map(ResponseEntity::ok);
     }
 
     @PostMapping
@@ -62,8 +54,7 @@ public class LoanController {
         String requestID = UUID.randomUUID().toString();
         log.info("Updating loan with ID: {} and request ID: {}", loanId, requestID);
         return loanService.updateLoan(loanRequestDTO, loanId, requestID)
-                .map(ResponseEntity::ok)
-                .defaultIfEmpty(ResponseEntity.notFound().build());
+                .map(ResponseEntity::ok);
     }
 
     @DeleteMapping("/{loanId}")
@@ -71,13 +62,6 @@ public class LoanController {
         String requestID = UUID.randomUUID().toString();
         log.info("Deleting loan with ID: {} and request ID: {}", loanId, requestID);
         return loanService.deleteLoan(loanId, requestID)
-                .then(Mono.just(ResponseEntity.noContent().<Object>build()))
-                .onErrorResume(e -> {
-                    log.error("Error deleting loan with ID: {} - {}", loanId, e.getMessage(), e);
-                    if (e instanceof LoanNotFoundException) {
-                        return Mono.just(ResponseEntity.status(404).body(Map.of("error", e.getMessage())));
-                    }
-                    return Mono.just(ResponseEntity.status(500).body(Map.of("error", "Internal Server Error")));
-                });
+                .then(Mono.just(ResponseEntity.noContent().<Object>build()));
     }
 }
