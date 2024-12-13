@@ -1,0 +1,82 @@
+# Java
+*.class
+*.jar
+*.war
+*.ear
+
+# Compiled class files
+*.class
+
+# Log files
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.pack
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# IntelliJ generated files
+.idea/
+*.iml
+*.ipr
+out/
+
+# Spring Boot specific files
+*.pid
+hs_err_pid*
+
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# Eclipse
+.project
+.classpath
+.cproject
+.settings/
+.apt_generated/
+.factorypath
+
+# VS Code
+.vscode/
+
+# Logs and temporary files
+logs/
+*.log
+*.tmp
+*.temp
+*.swp
+*.swo
+*.bak
+
+# Application-specific
+.env
+*.keystore
